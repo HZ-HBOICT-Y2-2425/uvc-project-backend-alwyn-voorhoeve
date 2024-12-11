@@ -1,4 +1,3 @@
-// start.js setup from learnnode.com by Wes Bos
 import express from 'express';
 import * as dotenv from 'dotenv';
 dotenv.config({ path: 'variables.env' });
@@ -12,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/', indexRouter);
 
-app.set('port', process.env.PORT || 3010);
+app.set('port', process.env.PORT || 3011);
 const server = app.listen(app.get('port'), () => {
   console.log(`🍿 Express running → PORT ${server.address().port}`);
 });
