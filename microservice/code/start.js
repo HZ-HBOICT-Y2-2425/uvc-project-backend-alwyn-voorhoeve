@@ -1,4 +1,3 @@
-// start.js setup from learnnode.com by Wes Bos
 import express from 'express';
 import * as dotenv from 'dotenv';
 dotenv.config({ path: 'variables.env' });
