@@ -6,11 +6,36 @@
     {
       "id": 1,
       "Name": "lasagna",
-      "Ingredients": [1, 2]
+      "Ingredients": [
+        1,
+        2
+      ],
+      "Description": "A delicious lasagna recipe"
     },
     {
       "id": 2,
-     "Name": "burger"
+      "Name": "burger",
+      "Ingredients": [
+        1,
+        2
+      ],
+      "Description": "A delicious burger recipe"
+    },
+    {
+      "id": 3,
+      "Name": "bigmac",
+      "Ingredients": [
+        3
+      ],
+      "Description": "lekker"
+    },
+    {
+      "id": 4,
+      "Name": "nigger",
+      "Ingredients": [
+        3
+      ],
+      "Description": "kanker zwart"
     }
   ],
   "ingredients": [
@@ -21,6 +46,10 @@
     {
       "IngredientId": 2,
       "Name": "Cheese"
+    },
+    {
+      "IngredientId": 3,
+      "Name": "Tomaat"
     }
   ],
   "users": [
