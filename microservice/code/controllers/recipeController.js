@@ -22,7 +22,7 @@ export async function getRecipeById(req, res) {
   if (recipe) {
     res.status(200).json(recipe);
   } else {
-    res.status(404).send("Recipe not found");
+    res.status(404).send('Recipe not found');
   }
 }
 
@@ -107,4 +107,44 @@ export async function deleteRecipe(req, res) {
   } else {
     res.status(404).send("Recipe not found.");
   }
+}
+
+// Edit a recipe
+export async function editRecipe(req, res) {
+  const { id } = req.params;
+  const { Name, Ingredients, Description } = req.body;
+
+  if (!Name || !Ingredients || !Description) {
+    return res.status(400).send("Missing required fields: Name, Ingredients, or Description.");
+  }
+
+  const recipeIndex = recipes.findIndex((r) => r.id === parseInt(id, 10));
+  if (recipeIndex === -1) {
+    return res.status(404).send("Recipe not found.");
+  }
+
+  const ingredientIds = Ingredients.split(",").map((ingredientName) => {
+    ingredientName = ingredientName.trim();
+    const existingIngredient = ingredients.find((i) => i.Name.toLowerCase() === ingredientName.toLowerCase());
+
+    if (existingIngredient) {
+      return existingIngredient.IngredientId;
+    } else {
+      const newIngredientId = ingredients.length ? Math.max(...ingredients.map((i) => i.IngredientId)) + 1 : 1;
+      const newIngredient = { IngredientId: newIngredientId, Name: ingredientName };
+      ingredients.push(newIngredient);
+      return newIngredientId;
+    }
+  });
+
+  recipes[recipeIndex] = {
+    ...recipes[recipeIndex],
+    Name,
+    Ingredients: ingredientIds,
+    Description,
+  };
+
+  await db.write();
+
+  res.status(200).json(recipes[recipeIndex]);
 }

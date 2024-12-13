@@ -5,37 +5,20 @@
   "recipes": [
     {
       "id": 1,
-      "Name": "lasagna",
+      "Name": "cheeseburger",
       "Ingredients": [
+        16,
+        12,
         1,
-        2
+        17,
+        2,
+        18,
+        19,
+        20,
+        21,
+        22
       ],
-      "Description": "A delicious lasagna recipe"
-    },
-    {
-      "id": 2,
-      "Name": "burger",
-      "Ingredients": [
-        1,
-        2
-      ],
-      "Description": "A delicious burger recipe"
-    },
-    {
-      "id": 3,
-      "Name": "bigmac",
-      "Ingredients": [
-        3
-      ],
-      "Description": "lekker"
-    },
-    {
-      "id": 4,
-      "Name": "nigger",
-      "Ingredients": [
-        3
-      ],
-      "Description": "kanker zwart"
+      "Description": "a delicious cheeseburger"
     }
   ],
   "ingredients": [
@@ -50,6 +33,82 @@
     {
       "IngredientId": 3,
       "Name": "Tomaat"
+    },
+    {
+      "IngredientId": 4,
+      "Name": "kanker"
+    },
+    {
+      "IngredientId": 5,
+      "Name": "fent"
+    },
+    {
+      "IngredientId": 6,
+      "Name": "tomatooo"
+    },
+    {
+      "IngredientId": 7,
+      "Name": "asdf"
+    },
+    {
+      "IngredientId": 8,
+      "Name": "safdsdf"
+    },
+    {
+      "IngredientId": 9,
+      "Name": "sdf"
+    },
+    {
+      "IngredientId": 10,
+      "Name": "burgersauce"
+    },
+    {
+      "IngredientId": 11,
+      "Name": "ym"
+    },
+    {
+      "IngredientId": 12,
+      "Name": "meat"
+    },
+    {
+      "IngredientId": 13,
+      "Name": "nice burger"
+    },
+    {
+      "IngredientId": 14,
+      "Name": "tomato sauce"
+    },
+    {
+      "IngredientId": 15,
+      "Name": "pasta"
+    },
+    {
+      "IngredientId": 16,
+      "Name": "bread"
+    },
+    {
+      "IngredientId": 17,
+      "Name": "lettuce"
+    },
+    {
+      "IngredientId": 18,
+      "Name": "onions"
+    },
+    {
+      "IngredientId": 19,
+      "Name": "ketchup"
+    },
+    {
+      "IngredientId": 20,
+      "Name": "mayonnaise"
+    },
+    {
+      "IngredientId": 21,
+      "Name": "pickles"
+    },
+    {
+      "IngredientId": 22,
+      "Name": "bacon"
     }
   ],
   "users": [
