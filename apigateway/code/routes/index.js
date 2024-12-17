@@ -1,13 +1,12 @@
 import express from 'express';
-import { createProxyMiddleware } from 'http-proxy-middleware';
+import { getRecipes, getRecipeById, addRecipe, addIngredient, deleteRecipe } from '../controllers/recipeController.js';
 const router = express.Router();
 
-// create a proxy for each microservice
-const microserviceProxy = createProxyMiddleware({
-  target: 'http://microservice:3011',
-  changeOrigin: true
-});
-
-router.use('/microservice', microserviceProxy);
+// Recipes routes
+router.get('/recipes', getRecipes);
+router.get('/recipes/:id', getRecipeById);
+router.post('/recipes', addRecipe);
+router.post('/ingredients', addIngredient);
+router.delete('/recipes/:id', deleteRecipe);
 
 export default router;
