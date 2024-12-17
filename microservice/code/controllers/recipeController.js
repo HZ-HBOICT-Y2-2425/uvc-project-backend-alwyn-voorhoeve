@@ -24,7 +24,6 @@ export async function getRecipes(req, res) {
   res.status(200).json(recipesWithIngredients);
 }
 
-
 // Get recipe by ID
 export async function getRecipeById(req, res) {
   const recipe = recipes.find(r => r.id === parseInt(req.params.id, 10));
@@ -41,7 +40,6 @@ export async function getRecipeById(req, res) {
     res.status(404).send('Recipe not found');
   }
 }
-
 
 // Add a new recipe
 export async function addRecipe(req, res) {
@@ -126,29 +124,27 @@ export async function deleteRecipe(req, res) {
   }
 }
 
-// Edit a recipe
-export async function editRecipe(req, res) {
-  const { id } = req.params;
-  const { Name, Ingredients, Description } = req.body;
+// Update a recipe (this is the 'update' API called by PUT)
+export async function updateRecipe(req, res) {
+  const { id, Name, Ingredients, Description } = req.body; // Extract data from request body
 
-  // Validate input fields
-  if (!Name || !Array.isArray(Ingredients) || !Description) {
-    return res.status(400).send("Missing required fields: Name, Ingredients (array), or Description.");
+  if (!id || !Name || !Ingredients || !Description) {
+    return res.status(400).send("ID, Name, Ingredients, and Description are required.");
   }
 
-  const recipeIndex = recipes.findIndex((r) => r.id === parseInt(id, 10));
+  let recipeIndex = recipes.findIndex((recipe) => recipe.id === id);
+
   if (recipeIndex === -1) {
     return res.status(404).send("Recipe not found.");
   }
 
-  // Convert ingredient names to their IDs
+  // Convert ingredient names to IngredientIds
   const ingredientIds = Ingredients.map((ingredientName) => {
     const existingIngredient = ingredients.find((i) => i.Name.toLowerCase() === ingredientName.toLowerCase());
-
     if (existingIngredient) {
       return existingIngredient.IngredientId;
     } else {
-      // Add new ingredient if it doesn't exist
+      // If the ingredient does not exist, create it
       const newIngredientId = ingredients.length ? Math.max(...ingredients.map((i) => i.IngredientId)) + 1 : 1;
       const newIngredient = { IngredientId: newIngredientId, Name: ingredientName };
       ingredients.push(newIngredient);
@@ -156,15 +152,15 @@ export async function editRecipe(req, res) {
     }
   });
 
-  // Update recipe details
+  // Update the recipe
   recipes[recipeIndex] = {
     ...recipes[recipeIndex],
     Name,
-    Ingredients: ingredientIds,
-    Description,
+    Ingredients: ingredientIds, // Use ingredientIds instead of ingredient names
+    Description
   };
 
-  await db.write();
+  await db.write(); // Save changes to the database or file system
 
-  res.status(200).json(recipes[recipeIndex]);
+  res.status(200).json(recipes[recipeIndex]); // Return the updated recipe
 }

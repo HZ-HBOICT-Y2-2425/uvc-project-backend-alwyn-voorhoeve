@@ -2,7 +2,20 @@
   "meta": {
     "title": "Recipes"
   },
-  "recipes": [],
+  "recipes": [
+    {
+      "id": 1,
+      "Name": "cheeseburger",
+      "Ingredients": [
+        1,
+        17,
+        2,
+        12,
+        5
+      ],
+      "Description": "nice burgers"
+    }
+  ],
   "ingredients": [
     {
       "IngredientId": 1,
