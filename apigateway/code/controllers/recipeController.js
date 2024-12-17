@@ -11,8 +11,8 @@ const db = await JSONFilePreset('db.json', defaultData);
 const recipes = db.data;
 
 export async function getRecipes(req, res) {
-  const allrecipes = db.data.recipes;
-  res.status(200).json(recipes);
+  const allrecipes = db.data.recipes || [];
+  res.status(200).json(allrecipes);
 }
 
 export async function getRecipeById(req, res) {

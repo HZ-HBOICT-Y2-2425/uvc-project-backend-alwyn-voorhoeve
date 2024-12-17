@@ -13,18 +13,35 @@ const ingredients = db.data.ingredients || [];
 
 // Get all recipes
 export async function getRecipes(req, res) {
-  res.status(200).json(recipes);
+  const recipesWithIngredients = recipes.map(recipe => ({
+    ...recipe,
+    Ingredients: recipe.Ingredients.map(id => {
+      const ingredient = ingredients.find(i => i.IngredientId === id);
+      return ingredient ? ingredient.Name : `Unknown ingredient (ID: ${id})`;
+    })
+  }));
+
+  res.status(200).json(recipesWithIngredients);
 }
+
 
 // Get recipe by ID
 export async function getRecipeById(req, res) {
-  const recipe = recipes.find((r) => r.id === parseInt(req.params.id, 10));
+  const recipe = recipes.find(r => r.id === parseInt(req.params.id, 10));
   if (recipe) {
-    res.status(200).json(recipe);
+    const recipeWithIngredients = {
+      ...recipe,
+      Ingredients: recipe.Ingredients.map(id => {
+        const ingredient = ingredients.find(i => i.IngredientId === id);
+        return ingredient ? ingredient.Name : `Unknown ingredient (ID: ${id})`;
+      })
+    };
+    res.status(200).json(recipeWithIngredients);
   } else {
     res.status(404).send('Recipe not found');
   }
 }
+
 
 // Add a new recipe
 export async function addRecipe(req, res) {
@@ -114,8 +131,9 @@ export async function editRecipe(req, res) {
   const { id } = req.params;
   const { Name, Ingredients, Description } = req.body;
 
-  if (!Name || !Ingredients || !Description) {
-    return res.status(400).send("Missing required fields: Name, Ingredients, or Description.");
+  // Validate input fields
+  if (!Name || !Array.isArray(Ingredients) || !Description) {
+    return res.status(400).send("Missing required fields: Name, Ingredients (array), or Description.");
   }
 
   const recipeIndex = recipes.findIndex((r) => r.id === parseInt(id, 10));
@@ -123,13 +141,14 @@ export async function editRecipe(req, res) {
     return res.status(404).send("Recipe not found.");
   }
 
-  const ingredientIds = Ingredients.split(",").map((ingredientName) => {
-    ingredientName = ingredientName.trim();
+  // Convert ingredient names to their IDs
+  const ingredientIds = Ingredients.map((ingredientName) => {
     const existingIngredient = ingredients.find((i) => i.Name.toLowerCase() === ingredientName.toLowerCase());
 
     if (existingIngredient) {
       return existingIngredient.IngredientId;
     } else {
+      // Add new ingredient if it doesn't exist
       const newIngredientId = ingredients.length ? Math.max(...ingredients.map((i) => i.IngredientId)) + 1 : 1;
       const newIngredient = { IngredientId: newIngredientId, Name: ingredientName };
       ingredients.push(newIngredient);
@@ -137,6 +156,7 @@ export async function editRecipe(req, res) {
     }
   });
 
+  // Update recipe details
   recipes[recipeIndex] = {
     ...recipes[recipeIndex],
     Name,

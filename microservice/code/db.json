@@ -2,25 +2,7 @@
   "meta": {
     "title": "Recipes"
   },
-  "recipes": [
-    {
-      "id": 1,
-      "Name": "cheeseburger",
-      "Ingredients": [
-        16,
-        12,
-        1,
-        17,
-        2,
-        18,
-        19,
-        20,
-        21,
-        22
-      ],
-      "Description": "a delicious cheeseburger"
-    }
-  ],
+  "recipes": [],
   "ingredients": [
     {
       "IngredientId": 1,
@@ -109,6 +91,15 @@
     {
       "IngredientId": 22,
       "Name": "bacon"
+    },
+    {
+      "IngredientId": 23,
+      "Name": "niGga tomato"
+    }
+  ],
+  "lijstje": [
+    {
+      "ingredients": []
     }
   ],
   "users": [
