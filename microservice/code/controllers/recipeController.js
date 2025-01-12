@@ -156,13 +156,13 @@ export async function updateRecipe(req, res) {
   recipes[recipeIndex] = {
     ...recipes[recipeIndex],
     Name,
-    Ingredients: ingredientIds, // Use ingredientIds instead of ingredient names
+    Ingredients: ingredientIds, 
     Description
   };
 
-  await db.write(); // Save changes to the database or file system
+  await db.write(); 
 
-  res.status(200).json(recipes[recipeIndex]); // Return the updated recipe
+  res.status(200).json(recipes[recipeIndex]); 
 }
 
 // Get all shopping list items
