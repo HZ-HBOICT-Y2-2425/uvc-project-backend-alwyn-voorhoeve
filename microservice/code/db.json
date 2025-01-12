@@ -1,7 +1,143 @@
 {
   "meta": {
-    "tile": "List of animals",
-    "date": "September 2024"
+    "title": "Recipes"
   },
-  "animals" : ["dog", "cat", "elephant", "lion"]
+  "recipes": [
+    {
+      "id": 1,
+      "Name": "cheeseburger",
+      "Ingredients": [
+        2,
+        12,
+        16
+      ],
+      "Description": "nice burger"
+    }
+  ],
+  "ingredients": [
+    {
+      "IngredientId": 1,
+      "Name": "Tomato"
+    },
+    {
+      "IngredientId": 2,
+      "Name": "Cheese"
+    },
+    {
+      "IngredientId": 3,
+      "Name": "Tomaat"
+    },
+    {
+      "IngredientId": 4,
+      "Name": "mango"
+    },
+    {
+      "IngredientId": 5,
+      "Name": "fent"
+    },
+    {
+      "IngredientId": 6,
+      "Name": "tomatooo"
+    },
+    {
+      "IngredientId": 7,
+      "Name": "asdf"
+    },
+    {
+      "IngredientId": 8,
+      "Name": "safdsdf"
+    },
+    {
+      "IngredientId": 9,
+      "Name": "sdf"
+    },
+    {
+      "IngredientId": 10,
+      "Name": "burgersauce"
+    },
+    {
+      "IngredientId": 11,
+      "Name": "ym"
+    },
+    {
+      "IngredientId": 12,
+      "Name": "meat"
+    },
+    {
+      "IngredientId": 13,
+      "Name": "nice burger"
+    },
+    {
+      "IngredientId": 14,
+      "Name": "tomato sauce"
+    },
+    {
+      "IngredientId": 15,
+      "Name": "pasta"
+    },
+    {
+      "IngredientId": 16,
+      "Name": "bread"
+    },
+    {
+      "IngredientId": 17,
+      "Name": "lettuce"
+    },
+    {
+      "IngredientId": 18,
+      "Name": "onions"
+    },
+    {
+      "IngredientId": 19,
+      "Name": "ketchup"
+    },
+    {
+      "IngredientId": 20,
+      "Name": "mayonnaise"
+    },
+    {
+      "IngredientId": 21,
+      "Name": "pickles"
+    },
+    {
+      "IngredientId": 22,
+      "Name": "bacon"
+    },
+    {
+      "IngredientId": 23,
+      "Name": "brown tomato"
+    },
+    {
+      "IngredientId": 24,
+      "Name": "pepperoni"
+    },
+    {
+      "IngredientId": 25,
+      "Name": "kaas"
+    },
+    {
+      "IngredientId": 26,
+      "Name": "ei"
+    },
+    {
+      "IngredientId": 27,
+      "Name": "pizzatopping"
+    },
+    {
+      "IngredientId": 28,
+      "Name": "domino"
+    }
+  ],
+  "shoppingList": [
+    {
+      "id": 1,
+      "Name": "cheese"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Alwyn Voorhoeve"
+    }
+  ]
 }

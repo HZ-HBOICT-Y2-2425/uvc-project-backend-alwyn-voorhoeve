@@ -1,7 +1,32 @@
 {
   "meta": {
-    "tile": "List of animals",
-    "date": "September 2024"
+    "title": "Recipes"
   },
-  "animals" : []
+  "recipes": [
+    {
+      "id": 1,
+      "Name": "lasagna",
+      "Ingredients": [1, 2]
+    },
+    {
+      "id": 2,
+     "Name": "burger"
+    }
+  ],
+  "Ingredients": [
+    {
+      "IngredientId": 1,
+      "Name": "Tomato"
+    },
+    {
+      "IngredientId": 2,
+      "Name": "Cheese"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "Name": "Alwyn Voorhoeve"
+    }
+  ]
 }

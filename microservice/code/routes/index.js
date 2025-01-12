@@ -1,14 +1,30 @@
 import express from 'express';
-import { responseExample, updateExample, responseByIdExample } from '../controllers/exampleController.js';
-import { checkName } from '../middleware/exampleMiddleware.js';
+import { getRecipes, getRecipeById, addRecipe, addIngredient, deleteRecipe, updateRecipe, getShoppingList, addShoppingListItem, deleteShoppingListItem, addIngredientToShoppingList } from '../controllers/recipeController.js';
+
 const router = express.Router();
 
-// routes
-router.get('/', (req, res, next) => {
-  res.json('hi');
+// GET all recipes
+router.get('/recipes', getRecipes);
+router.get('/recipes/:id', getRecipeById);
+router.post('/recipes', addRecipe);
+router.post('/ingredients', addIngredient);
+router.delete('/recipes/:id', deleteRecipe);
+router.put('/recipes/:id', updateRecipe);  
+
+router.get('/shoppingList', getShoppingList);
+router.post('/shoppingList', addShoppingListItem);
+router.delete('/shoppingList/:id', deleteShoppingListItem);
+router.post('/shoppingList', addIngredientToShoppingList);
+
+
+
+
+// CORS and other middleware
+router.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173'); 
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    next();
 });
-router.get('/example', checkName, responseExample);
-router.post('/example', checkName, updateExample);
-router.get('/example/:id', checkName, responseByIdExample);
 
 export default router;
