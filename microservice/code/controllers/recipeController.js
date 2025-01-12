@@ -126,7 +126,7 @@ export async function deleteRecipe(req, res) {
 
 // Update a recipe (this is the 'update' API called by PUT)
 export async function updateRecipe(req, res) {
-  const { id, Name, Ingredients, Description } = req.body; // Extract data from request body
+  const { id, Name, Ingredients, Description } = req.body; 
 
   if (!id || !Name || !Ingredients || !Description) {
     return res.status(400).send("ID, Name, Ingredients, and Description are required.");
@@ -164,3 +164,57 @@ export async function updateRecipe(req, res) {
 
   res.status(200).json(recipes[recipeIndex]); // Return the updated recipe
 }
+
+// Get all shopping list items
+export async function getShoppingList(req, res) {
+  const shoppingList = db.data.shoppingList || [];
+  res.status(200).json(shoppingList);
+}
+
+// Add an item to the shopping list
+export async function addShoppingListItem(req, res) {
+  const { Name } = req.body;
+
+  if (!Name) {
+    return res.status(400).send("Item name is required.");
+  }
+
+  const newItem = {
+    id: db.data.shoppingList.length ? Math.max(...db.data.shoppingList.map((i) => i.id)) + 1 : 1,
+    Name,
+  };
+
+  db.data.shoppingList.push(newItem);
+  await db.write();
+
+  res.status(201).json(newItem);
+}
+
+// Delete an item from the shopping list
+export async function deleteShoppingListItem(req, res) {
+  const itemId = parseInt(req.params.id, 10);
+  const index = db.data.shoppingList.findIndex((item) => item.id === itemId);
+
+  if (index !== -1) {
+    db.data.shoppingList.splice(index, 1);
+    await db.write();
+    res.status(204).send();
+  } else {
+    res.status(404).send("Item not found.");
+  }
+}
+
+export const addIngredientToShoppingList = async (req, res) => {
+  const { ingredient } = req.body;
+
+  if (!ingredient) {
+      return res.status(400).json({ error: 'Ingredient is required' });
+  }
+
+  try {
+      await db.ShoppingList.create({ name: ingredient });
+      res.status(201).json({ message: 'Ingredient added to shopping list' });
+  } catch (err) {
+      res.status(500).json({ error: err.message });
+  }
+};

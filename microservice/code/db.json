@@ -7,13 +7,11 @@
       "id": 1,
       "Name": "cheeseburger",
       "Ingredients": [
-        1,
-        17,
         2,
         12,
-        5
+        16
       ],
-      "Description": "nice burgers"
+      "Description": "nice burger"
     }
   ],
   "ingredients": [
@@ -31,7 +29,7 @@
     },
     {
       "IngredientId": 4,
-      "Name": "kanker"
+      "Name": "mango"
     },
     {
       "IngredientId": 5,
@@ -107,12 +105,33 @@
     },
     {
       "IngredientId": 23,
-      "Name": "niGga tomato"
+      "Name": "brown tomato"
+    },
+    {
+      "IngredientId": 24,
+      "Name": "pepperoni"
+    },
+    {
+      "IngredientId": 25,
+      "Name": "kaas"
+    },
+    {
+      "IngredientId": 26,
+      "Name": "ei"
+    },
+    {
+      "IngredientId": 27,
+      "Name": "pizzatopping"
+    },
+    {
+      "IngredientId": 28,
+      "Name": "domino"
     }
   ],
-  "lijstje": [
+  "shoppingList": [
     {
-      "ingredients": []
+      "id": 1,
+      "Name": "cheese"
     }
   ],
   "users": [
